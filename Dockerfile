@@ -5,7 +5,7 @@ FROM openjdk:17-jdk-slim
 WORKDIR /app
 
 # Copy your application JAR file into the container
-COPY target/WaterSharing-1.0.0.jar app.jar
+COPY target/WaterSharing-2.0.0.jar app.jar
 
 # Expose the port (optional, for documentation purposes)
 EXPOSE 8080
