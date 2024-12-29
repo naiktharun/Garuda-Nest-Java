@@ -31,6 +31,13 @@ public class FlatController {
     @Autowired
     private ExcelExportService excelExportService;
 
+    // Health Check Endpoint
+    @GetMapping("/health")
+    @ResponseBody
+    public ResponseEntity<String> healthCheck() {
+        return ResponseEntity.ok("Application is running");
+    }
+
     @GetMapping("/garudanest-tanker")
     public String showForm(Model model) {
         model.addAttribute("flats", flatService.getFlats());
