@@ -16,20 +16,20 @@ public class WaterSharingService {
             flats = Collections.emptyList();
         }
         double totalHeadCount = flats.stream().mapToDouble(Flat::calculateHeadCount).sum();
-        int totalMembers = flats.stream().mapToInt(flat -> flat.getAdults() + flat.getKids() + flat.getRelatives()).sum();
+        int totalMembers = flats.stream().mapToInt(flat -> flat.getAdults() + flat.getKids() + flat.getGuests()).sum(); // Changed from getRelatives to getGuests
 
         totalMembersHolder.setTotalMembers(totalMembers);
 
         return flats.stream()
-                .map(flat -> {
-                    double flatHeadCount = flat.calculateHeadCount();
-                    double share = (flatHeadCount / totalHeadCount) * tankerCost;
-                    return new String[]{
+                    .map(flat -> {
+                        double flatHeadCount = flat.calculateHeadCount();
+                        double share = (flatHeadCount / totalHeadCount) * tankerCost;
+                        return new String[]{
                             flat.getFlatNumber(), // Ensure flat number is included
                             String.valueOf(flatHeadCount),
                             String.format("%.2f", share)
-                    };
-                })
-                .collect(Collectors.toList());
+                        };
+                    })
+                    .collect(Collectors.toList());
     }
 }

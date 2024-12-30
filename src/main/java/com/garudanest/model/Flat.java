@@ -4,30 +4,52 @@ public class Flat {
     private String flatNumber;
     private int adults;
     private int kids;
-    private int relatives;
+    private int guests; // Changed from relatives to guests
 
-    public Flat() {}
+    // Getters and setters
+    public String getFlatNumber() {
+        return flatNumber;
+    }
 
-    public Flat(String flatNumber, int adults, int kids, int relatives) {
+    public Flat(){}
+
+    public Flat(String flatNumber, int adults, int kids, int guests) {
         this.flatNumber = flatNumber;
         this.adults = adults;
         this.kids = kids;
-        this.relatives = relatives;
+        this.guests = guests;
     }
 
-    public String getFlatNumber() { return flatNumber; }
-    public void setFlatNumber(String flatNumber) { this.flatNumber = flatNumber; }
+    public void setFlatNumber(String flatNumber) {
+        this.flatNumber = flatNumber;
+    }
 
-    public int getAdults() { return adults; }
-    public void setAdults(int adults) { this.adults = adults; }
+    public int getAdults() {
+        return adults;
+    }
 
-    public int getKids() { return kids; }
-    public void setKids(int kids) { this.kids = kids; }
+    public void setAdults(int adults) {
+        this.adults = adults;
+    }
 
-    public int getRelatives() { return relatives; }
-    public void setRelatives(int relatives) { this.relatives = relatives; }
+    public int getKids() {
+        return kids;
+    }
 
+    public void setKids(int kids) {
+        this.kids = kids;
+    }
+
+    public int getGuests() {
+        return guests;
+    }
+
+    public void setGuests(int guests) {
+        this.guests = guests;
+    }
+
+    // Method to calculate head count
     public double calculateHeadCount() {
-        return adults + (kids * 0.5) + relatives;
+        return adults + 0.5 * kids + guests;
     }
 }

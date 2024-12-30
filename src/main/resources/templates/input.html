@@ -19,13 +19,13 @@
             <th>Flat Number</th>
             <th>Adults</th>
             <th>Kids (< 5 years)</th>
-            <th>Relatives</th>
+            <th>Guests</th> <!-- Changed from Relatives to Guests -->
         </tr>
         <tr th:each="flat, iterStat : ${flatForm.flats}">
             <td th:text="${flat.flatNumber}" class="flat-number"></td>
             <td><input type="number" th:field="*{flats[__${iterStat.index}__].adults}" min="0" class="table-input" /></td>
             <td><input type="number" th:field="*{flats[__${iterStat.index}__].kids}" min="0" class="table-input" /></td>
-            <td><input type="number" th:field="*{flats[__${iterStat.index}__].relatives}" min="0" class="table-input" /></td>
+            <td><input type="number" th:field="*{flats[__${iterStat.index}__].guests}" min="0" class="table-input" /></td> <!-- Updated field -->
         </tr>
     </table>
     <button type="submit">Calculate</button>
