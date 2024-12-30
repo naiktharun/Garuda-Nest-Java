@@ -9,7 +9,7 @@
     <img src="/images/logo.jpg" alt="Logo" class="logo">
     <h1>Garuda Nest Water Sharing</h1>
 </div>
-<form action="/calculate" method="post">
+<form action="/garudanest-tanker/calculate" method="post" th:object="${flatForm}">
     <p>
         <label for="tankerCost">Tanker Cost:</label>
         <input type="number" id="tankerCost" name="tankerCost" step="0.01" required />
@@ -19,13 +19,13 @@
             <th>Flat Number</th>
             <th>Adults</th>
             <th>Kids (< 5 years)</th>
-            <th>Guests</th>
+            <th>Relatives</th>
         </tr>
-        <tr th:each="flat : ${flats}">
+        <tr th:each="flat, iterStat : ${flatForm.flats}">
             <td th:text="${flat.flatNumber}" class="flat-number"></td>
-            <td><input type="number" name="adults" min="0" class="table-input" th:value="${flat.adults}" /></td>
-            <td><input type="number" name="kids" min="0" class="table-input" th:value="${flat.kids}" /></td>
-            <td><input type="number" name="guests" min="0" class="table-input" th:value="${flat.relatives}" /></td>
+            <td><input type="number" th:field="*{flats[__${iterStat.index}__].adults}" min="0" class="table-input" /></td>
+            <td><input type="number" th:field="*{flats[__${iterStat.index}__].kids}" min="0" class="table-input" /></td>
+            <td><input type="number" th:field="*{flats[__${iterStat.index}__].relatives}" min="0" class="table-input" /></td>
         </tr>
     </table>
     <button type="submit">Calculate</button>

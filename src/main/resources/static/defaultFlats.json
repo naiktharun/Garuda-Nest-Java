@@ -27,7 +27,7 @@
     "flatNumber": "101",
     "adults": 3,
     "kids": 0,
-    "relatives": 1
+    "relatives": 0
   },
   {
     "flatNumber": "102",
@@ -81,7 +81,7 @@
     "flatNumber": "302",
     "adults": 2,
     "kids": 1,
-    "relatives": 1
+    "relatives": 0
   },
   {
     "flatNumber": "303",
@@ -115,7 +115,7 @@
   },
   {
     "flatNumber": "404",
-    "adults": 4,
+    "adults": 5,
     "kids": 1,
     "relatives": 0
   }
