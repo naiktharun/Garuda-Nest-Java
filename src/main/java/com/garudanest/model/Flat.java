@@ -2,54 +2,53 @@ package com.garudanest.model;
 
 public class Flat {
     private String flatNumber;
-    private int adults;
-    private int kids;
-    private int guests; // Changed from relatives to guests
+    private double adults; // Changed from int to double
+    private double kids;   // Changed from int to double
+    private double guests; // Changed from int to double
 
-    // Getters and setters
-    public String getFlatNumber() {
-        return flatNumber;
-    }
+    public Flat() {}
 
-    public Flat(){}
-
-    public Flat(String flatNumber, int adults, int kids, int guests) {
+    public Flat(String flatNumber, double adults, double kids, double guests) {
         this.flatNumber = flatNumber;
         this.adults = adults;
         this.kids = kids;
         this.guests = guests;
+    }
+
+    public String getFlatNumber() {
+        return flatNumber;
     }
 
     public void setFlatNumber(String flatNumber) {
         this.flatNumber = flatNumber;
     }
 
-    public int getAdults() {
+    public double getAdults() {
         return adults;
     }
 
-    public void setAdults(int adults) {
+    public void setAdults(double adults) {
         this.adults = adults;
     }
 
-    public int getKids() {
+    public double getKids() {
         return kids;
     }
 
-    public void setKids(int kids) {
+    public void setKids(double kids) {
         this.kids = kids;
     }
 
-    public int getGuests() {
+    public double getGuests() {
         return guests;
     }
 
-    public void setGuests(int guests) {
+    public void setGuests(double guests) {
         this.guests = guests;
     }
 
     // Method to calculate head count
     public double calculateHeadCount() {
-        return adults + 0.5 * kids + guests;
+        return adults + (0.5 * kids) + guests;
     }
 }

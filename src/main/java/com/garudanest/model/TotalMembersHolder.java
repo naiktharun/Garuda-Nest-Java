@@ -1,13 +1,13 @@
 package com.garudanest.model;
 
 public class TotalMembersHolder {
-    private int totalMembers;
+    private double totalMembers; // Changed from int to double
 
-    public int getTotalMembers() {
+    public double getTotalMembers() {
         return totalMembers;
     }
 
-    public void setTotalMembers(int totalMembers) {
+    public void setTotalMembers(double totalMembers) {
         this.totalMembers = totalMembers;
     }
 }

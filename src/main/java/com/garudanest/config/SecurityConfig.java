@@ -25,15 +25,17 @@ public class SecurityConfig {
         http
                 .csrf(csrf -> csrf.disable()) // Disable CSRF protection
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/login", "/css/**").permitAll()
-                        .anyRequest().authenticated()
+                        .requestMatchers("/login", "/css/**").permitAll()  // Permit access to login and static resources
+                        .anyRequest().authenticated()  // Require authentication for all other requests
                 )
                 .formLogin(form -> form
-                        .loginPage("/login")
+                        .loginPage("/login")  // Custom login page
                         .permitAll()
+                        .defaultSuccessUrl("/garudanest-tanker", true)  // Redirect to /garudanest-tanker after successful login
                 )
                 .logout(logout -> logout
                         .permitAll()
+                        .logoutSuccessUrl("/login")  // Redirect to /login after logout
                 );
         return http.build();
     }

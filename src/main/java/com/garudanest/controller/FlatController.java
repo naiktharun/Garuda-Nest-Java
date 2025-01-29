@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.support.SessionStatus;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
@@ -69,5 +70,11 @@ public class FlatController {
                 .headers(headers)
                 .contentType(MediaType.APPLICATION_OCTET_STREAM)
                 .body(in.readAllBytes());
+    }
+
+    @GetMapping("/garudanest-tanker/logout")
+    public String logout(SessionStatus sessionStatus) {
+        sessionStatus.setComplete();  // Invalidate the session
+        return "redirect:/login";  // Redirect to the home page or login page
     }
 }

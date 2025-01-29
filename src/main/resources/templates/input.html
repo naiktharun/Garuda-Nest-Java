@@ -9,6 +9,7 @@
     <img src="/images/logo.jpg" alt="Logo" class="logo">
     <h1>Garuda Nest Water Sharing</h1>
 </div>
+
 <form action="/garudanest-tanker/calculate" method="post" th:object="${flatForm}">
     <p>
         <label for="tankerCost">Tanker Cost:</label>
@@ -19,16 +20,21 @@
             <th>Flat Number</th>
             <th>Adults</th>
             <th>Kids (< 5 years)</th>
-            <th>Guests</th> <!-- Changed from Relatives to Guests -->
+            <th>Guests</th>
         </tr>
         <tr th:each="flat, iterStat : ${flatForm.flats}">
             <td th:text="${flat.flatNumber}" class="flat-number"></td>
-            <td><input type="number" th:field="*{flats[__${iterStat.index}__].adults}" min="0" class="table-input" /></td>
-            <td><input type="number" th:field="*{flats[__${iterStat.index}__].kids}" min="0" class="table-input" /></td>
-            <td><input type="number" th:field="*{flats[__${iterStat.index}__].guests}" min="0" class="table-input" /></td> <!-- Updated field -->
+            <td><input type="number" th:field="*{flats[__${iterStat.index}__].adults}" step="0.01" min="0" class="table-input" /></td>
+            <td><input type="number" th:field="*{flats[__${iterStat.index}__].kids}" step="0.01" min="0" class="table-input" /></td>
+            <td><input type="number" th:field="*{flats[__${iterStat.index}__].guests}" step="0.01" min="0" class="table-input" /></td>
         </tr>
     </table>
     <button type="submit">Calculate</button>
+</form>
+
+<!-- Logout Button -->
+<form action="/garudanest-tanker/logout" method="get">
+    <button type="submit">Logout</button>
 </form>
 
 <p th:if="${error}" style="color: red;" th:text="${error}"></p>

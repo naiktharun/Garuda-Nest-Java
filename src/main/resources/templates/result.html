@@ -9,23 +9,31 @@
     <img src="/images/logo.jpg" alt="Logo" class="logo">
     <h1>Calculation Results</h1>
 </div>
+
 <table border="1">
     <tr>
         <th>Flat Number</th>
         <th>Total Members</th>
-        <th>Water Cost Share</th>
+        <th>Water Cost Share (₹)</th>
     </tr>
-    <tr th:each="res : ${result}">
+    <tr th:each="res : ${result}"> <!-- Changed from result to shares -->
         <td th:text="${res[0]}" class="flat-number"></td>
-        <td th:text="${res[1]}"></td>
-        <td th:text="${res[2]}"></td>
+        <td th:text="${#numbers.formatDecimal(res[1], 1, 2)}"></td> <!-- Formatted as decimal -->
+        <td th:text="${#numbers.formatDecimal(res[2], 1, 2)}"></td> <!-- Formatted as decimal -->
     </tr>
 </table>
-<p>Total Members: <span th:text="${totalMembers}"></span></p>
+
+<p><strong>Total Members:</strong> <span th:text="${#numbers.formatDecimal(totalMembers, 1, 2)}"></span></p> <!-- Formatted as decimal -->
+
 <a href="/garudanest-tanker" id="backButton">Back</a>
+
 <form action="/garudanest-tanker/export" method="get">
-    <input type="hidden" name="tankerCost" th:value="${tankerCost}"> <!-- Use the correct tanker cost -->
+    <input type="hidden" name="tankerCost" th:value="${tankerCost}"> <!-- Ensure tankerCost is present -->
     <button type="submit">Export to Excel</button>
+</form>
+
+<form action="/garudanest-tanker/logout" method="get">
+    <button type="submit">Logout</button>
 </form>
 
 <footer>
